@@ -1,0 +1,21 @@
+{
+  "name": "vector-media",
+  "version": "0.0.0",
+  "authors": [
+    "Connor Peet <connor@connorpeet.com>"
+  ],
+  "main": "Gruntfile.js",
+  "license": "Proprietary",
+  "homepage": "https://github.com/Fahim7755/Vector-Media",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.2"
+  }
+}
