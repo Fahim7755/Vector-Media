@@ -20,6 +20,82 @@
 
 @import "util/toolbox.less";
 
-@SansSerifCondensed: 'Oswald', sans-serif;
-
 @theme-primary: #f02311;
+
+body, h1 {
+	font-weight: 200;
+}
+
+#hello, h1 {
+	font-weight: 200;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+}
+
+#hello {
+	background: url('../img/bg1.jpg');
+	background-size: cover;
+
+	a {
+		display: block;
+		margin: 20px auto;
+		line-height: 3em;
+		border: 1px solid #fff;
+		border-radius: 5px;
+		color: #fff;
+		font-size: 1.25em;
+		width: 250px;
+		background: rgba(255, 255, 255, 0);
+
+		&:hover {
+			text-decoration: none;
+			background: rgba(255, 255, 255, 0.25);
+			.transition(0.3s);
+		}
+	}
+	h1 {
+		margin: 0;
+		padding: 0;
+		line-height: 2em;
+		color: #fff;
+		.transition(0.5s);
+	}
+	.ticker {
+		height: 3em;
+		overflow: hidden;
+		font-size: 1.5em;
+	}
+	.center {
+		text-align: center;
+		position: relative;
+	}
+}
+.slide {
+	position: relative;
+	width: 100%;
+}
+
+h1.title {
+	font-weight: 200;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+	background: #fff;
+	text-align: center;
+	margin: 30px 0;
+
+	&::after {
+		content: "\00a0";
+		width: 3em;
+		height: 3px;
+		display: block;
+		background: #000;
+		margin: 10px auto;
+	}
+}
+
+p.spotlight {
+	line-height: 1.5em;
+	color: #666;
+	width: inherit;
+	text-align: center;
+}

@@ -2,9 +2,14 @@ require.config
 	paths:
 		jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min', 'jquery'],
 		tweenmax: ['//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min', 'tweenmax']
-		scrollorama: ['scrollorama']
+		underscore: ['//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min', 'underscore']
+		scrollorama: ['scrollorama'],
+		waypoints: ['waypoints']
 	shim:
 		scrollorama: ['jquery', 'tweenmax']
+		waypoints: ['jquery']
+		underscore:
+			exports: '_'
 		
 require ['app'], (App) ->
 	App.initialize()

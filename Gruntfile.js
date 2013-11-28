@@ -26,11 +26,17 @@ module.exports = function(grunt) {
           src: ['bower_components/jquery/jquery.js'],
           dest: 'dist/js/jquery.js'
         }, {
+          src: ['bower_components/jquery-waypoints/waypoints.js'],
+          dest: 'dist/js/waypoints.js'
+        }, {
           src: ['bower_components/SuperScrollorama/js/jquery.superscrollorama.js'],
           dest: 'dist/js/scrollorama.js'
         }, {
           src: ['bower_components/greensock-js/src/uncompressed/TweenMax.js'],
           dest: 'dist/js/tweenmax.js'
+        }, {
+          src: ['bower_components/underscore/underscore.js'],
+          dest: 'dist/js/underscore.js'
         }]
       }
     },
