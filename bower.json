@@ -16,6 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.0.2"
+    "bootstrap": "~3.0.2",
+    "greensock-js": "~1.9.8",
+    "SuperScrollorama": "~1.0.3"
   }
 }

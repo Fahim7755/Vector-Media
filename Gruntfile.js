@@ -23,8 +23,14 @@ module.exports = function(grunt) {
           dest: 'dist/js',
           ext: '.js'
         }, {
-          src: ['bower_components/bootstrap/dist/js/bootstrap.js'],
-          dest: 'dist/js/bootstrap.js'
+          src: ['bower_components/jquery/jquery.js'],
+          dest: 'dist/js/jquery.js'
+        }, {
+          src: ['bower_components/SuperScrollorama/js/jquery.superscrollorama.js'],
+          dest: 'dist/js/scrollorama.js'
+        }, {
+          src: ['bower_components/greensock-js/src/uncompressed/TweenMax.js'],
+          dest: 'dist/js/tweenmax.js'
         }]
       }
     },
@@ -72,8 +78,8 @@ module.exports = function(grunt) {
       }
     },
     concurrent: {
-      build: ['coffee', 'less', 'copy:template', 'imagemin'],
-      postbuild: ['copy:php', 'uglify']
+      build: ['coffee', 'less', 'imagemin', 'htmlmin'],
+      postbuild: ['uglify']
     },
     clean: {
       pre: ['dist'],
@@ -88,6 +94,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
   grunt.registerTask('default', ['clean:pre', 'concurrent:build', 'concurrent:postbuild', 'clean:post']);
 
