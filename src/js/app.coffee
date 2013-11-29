@@ -6,7 +6,11 @@ define [
 	'mixitup'
 ], ($, _) ->
 
-	inits = ->
+	initPrecenter = ->
+		$('#clientlist li').wrapInner('<div />').each ->
+			$(@).css 'background-image', 'url("img/clients/' + $(this).attr('data-name') + '.png")'
+
+	initPostcenter = ->
 		controller = $.superscrollorama
 			triggerAtCenter: false,
 			playoutAnimations: true
@@ -76,9 +80,6 @@ define [
 			$(@).waypoint('destroy')
 			$('#portfolio .thumbnail').each ->
 				$(this).css 'background-image', 'url("' + $(this).attr('data-src') + '")'
-
-		$('#clientlist li').wrapInner('<div />').each ->
-			$(@).css 'background-image', 'url("img/clients/' + $(this).attr('data-name') + '.png")'
 
 
 		testimonialbox = false
@@ -175,10 +176,11 @@ define [
 	return {
 		initialize: ->
 			$(document).ready ->
+				initPrecenter()
 				setSlide()
 				centerElements()
 				tickerGo()
-				inits()
+				initPostcenter()
 
 				$(window).on 'resize', resizeUpdates
 	}
