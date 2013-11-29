@@ -77,6 +77,8 @@ define [
 
 		$('#portfolio-grid').mixitup();
 
+		controller.pin '#portfolio', winheight * 0.5, { offset: -navheight}
+
 		$('#portfolio').waypoint ->
 			$(@).waypoint('destroy')
 			$('#portfolio .project').each ->
@@ -92,6 +94,7 @@ define [
 						}, 500)
 
 
+		controller.pin '#clients', winheight * 0.5, { offset: -navheight}
 		parallaxer('#clients');
 
 		testimonialbox = false
