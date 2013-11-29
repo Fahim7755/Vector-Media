@@ -76,11 +76,22 @@ define [
 				$(this).parent('li').addClass 'active'
 
 		$('#portfolio-grid').mixitup();
+
 		$('#portfolio').waypoint ->
 			$(@).waypoint('destroy')
-			$('#portfolio .thumbnail').each ->
-				$(this).css 'background-image', 'url("' + $(this).attr('data-src') + '")'
+			$('#portfolio .project').each ->
+				name = $(this).attr('data-name')
+				$('.thumbnail', this).css 'background-image', 'url("img/thumbnails/' + name + '.jpg")'
 
+				$(this).on 'click', ->
+					require ['text!../items/' + name + '/index.html'], (data) ->
+						$('#portview').html(data).slideDown(500);
+						$('body').animate({
+								scrollTop: $('#portview').offset().top - 80
+						}, 500)
+
+
+		parallaxer('#clients');
 
 		testimonialbox = false
 

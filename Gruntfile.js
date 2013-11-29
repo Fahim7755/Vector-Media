@@ -40,6 +40,12 @@ module.exports = function(grunt) {
         }, {
           src: ['bower_components/underscore/underscore.js'],
           dest: 'dist/js/underscore.js'
+        }, {
+          src: ['bower_components/requirejs/require.js'],
+          dest: 'dist/js/require.js'
+        }, {
+          src: ['bower_components/requirejs-text/text.js'],
+          dest: 'dist/js/text.js'
         }]
       }
     },
