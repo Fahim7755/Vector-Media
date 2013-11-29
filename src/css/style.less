@@ -42,7 +42,7 @@ a:hover {
 	text-decoration: none;
 }
 
-#hello, h1, #services .service h3 {
+#hello, h1, #services .service h3, h3.title {
 	font-weight: 200;
 	text-transform: uppercase;
 	letter-spacing: 0.3em;
@@ -114,6 +114,17 @@ h1.title {
 		margin: 10px auto;
 	}
 }
+h3.title {
+	&::after {
+		content: "\00a0";
+		width: 3em;
+		height: 3px;
+		display: block;
+		background: #000;
+		margin: 10px 0;
+	}
+}
+
 p {
 	line-height: 1.5em;
 	color: #666;
@@ -365,5 +376,32 @@ a.social {
 			margin: 0 0.4em;
 			font-size: 2.75em;
 		}
+	}
+}
+
+#portview {
+
+	background: #fafafa;
+	padding: 40px 0;
+	
+	blockquote {
+		border-left: 3px solid #ddd;
+		margin-left: 10px;
+		padding-left: 19px;
+		font-style: italic;
+	}
+	img {
+		max-width: 100%;
+	}
+}
+
+.screened {
+position: relative;
+
+	.screen {
+		position: absolute;
+		background: url('../img/mbp.png') center top no-repeat;
+		background-size: contain;
+		z-index: 10;
 	}
 }

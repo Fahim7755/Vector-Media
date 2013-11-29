@@ -86,6 +86,7 @@ define [
 				$(this).on 'click', ->
 					require ['text!../items/' + name + '/index.html'], (data) ->
 						$('#portview').html(data).slideDown(500);
+						screenCalc()
 						$('body').animate({
 								scrollTop: $('#portview').offset().top - 80
 						}, 500)
@@ -108,6 +109,39 @@ define [
 			if testimonialbox is on
 				$('#clientlist li').removeClass('active')
 				testimonialbox = false
+
+	screenCalc = () ->
+		standard = { x: 960, y: 573 }
+
+		$('.screened').each ->
+
+			if $('.screen', this).length isnt 0 then return false
+
+			$parent = $(@).parent()
+			dims =
+				px: $parent.width()
+				py: $parent.height()
+				x: $(@).width()
+				y: $(@).height()
+
+			scale = dims.px / standard.x
+
+			scr = $('<div class="screen" />')
+			scr.css
+				width : standard.x * scale
+				height: standard.y * scale
+
+			wrap = $('<div />');
+			wrap.css
+				position : 'absolute'
+				top      : 30 * scale
+				left     : 112 * scale
+				overflow : 'hidden'
+				width    : 735 * scale
+				height   : 470 * scale
+
+			$('> *:first-child', @).wrap wrap
+			$(@).append(scr).css('height', standard.y * scale);
 
 	isInViewport = (el) ->
 		top = $(el).offset().top
