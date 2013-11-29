@@ -20,7 +20,7 @@
 
 @import "util/toolbox.less";
 
-@theme-primary: #f02311;
+@theme-primary: #4fc1e9;
 
 body, h1 {
 	font-weight: 200;
@@ -182,7 +182,83 @@ a.social {
 			border-radius: 50%;
 			width: 2.5em;
 			line-height: 2.5em;
-			margin: 30px auto 0;
+			margin: 50px auto 0;
+		}
+	}
+}
+
+#portfolio-grid {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+
+	&:after{
+		content: '';
+		display: inline-block;
+		width: 100%;
+	}
+
+	.gap{
+		display: inline-block;
+		width: 200px;
+	}
+
+	.mix {
+		width: 23%;
+		margin: 1%;
+		opacity: 0;
+		display: none;
+		cursor: pointer;
+	}
+}
+#portfolio {
+	.filtering {
+		text-align: center;
+
+		li {
+			margin-right: 10px;
+			
+			&:after {
+				content: "/";
+				color: @theme-primary;
+				padding-left: 15px;
+			}
+			
+			&:last-of-type:after {
+				content: "";
+			}
+		}
+	}
+
+	.filter {
+		font-family: "Georgia", Georgia, serif;
+		font-style: italic;
+		text-transform: lowercase;
+		color: #424242;
+		cursor: pointer;
+		display: inline-block;
+
+		&.active {
+			color: @theme-primary;
+		}
+	}
+
+	.thumbnail {
+		height: 200px;
+		background-position: cover;
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+	}
+
+	.projectinfo h4 {
+		text-align: left;
+		text-transform: uppercase;
+		font-weight: 400;
+		color: #666;
+
+		em {
+			text-transform: lowercase;
+			font-family: 'Georgia', Georgia, serif;
+			color: #aaa;
 		}
 	}
 }

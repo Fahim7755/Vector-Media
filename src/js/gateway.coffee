@@ -5,8 +5,10 @@ require.config
 		underscore: ['//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min', 'underscore']
 		scrollorama: ['scrollorama'],
 		waypoints: ['waypoints']
+		mixitup: ['mixitup']
 	shim:
 		scrollorama: ['jquery', 'tweenmax']
+		mixitup: ['jquery']
 		waypoints: ['jquery']
 		underscore:
 			exports: '_'

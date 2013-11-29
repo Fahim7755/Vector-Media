@@ -28,6 +28,9 @@ module.exports = function(grunt) {
         }, {
           src: ['bower_components/jquery-waypoints/waypoints.js'],
           dest: 'dist/js/waypoints.js'
+        },, {
+          src: ['bower_components/mixitup/src/jquery.mixitup.js'],
+          dest: 'dist/js/mixitup.js'
         }, {
           src: ['bower_components/SuperScrollorama/js/jquery.superscrollorama.js'],
           dest: 'dist/js/scrollorama.js'

@@ -2,7 +2,8 @@ define [
 	'jquery',
 	'underscore',
 	'scrollorama',
-	'waypoints'
+	'waypoints',
+	'mixitup'
 ], ($, _) ->
 
 	inits = ->
@@ -48,6 +49,17 @@ define [
 			]),
 		}
 
+		controller.addTween(
+			'#services',
+			(new TimelineLite()).append([
+				TweenMax.fromTo($('#services .center'), 1, 
+					{css:{'padding-top': 0}, immediateRender:true}, 
+					{css:{'padding-top': winheight  * 0.25}}
+				),
+			]),
+			winheight 
+		)
+
 
 		$('a.scrollto').on 'click', (e) ->
 			$('body').animate({
@@ -63,6 +75,10 @@ define [
 			$elem.waypoint =>
 				$('#js-navlist li').removeClass 'active'
 				$(this).parent('li').addClass 'active'
+
+		$('#portfolio-grid').mixitup();
+		$('#portfolio .thumbnail').each ->
+			$(this).css 'background-image', 'url("' + $(this).attr('data-src') + '")'
 
 	isInViewport = (el) ->
 		top = $(el).offset().top
