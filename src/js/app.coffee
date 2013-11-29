@@ -77,8 +77,10 @@ define [
 				$(this).parent('li').addClass 'active'
 
 		$('#portfolio-grid').mixitup();
-		$('#portfolio .thumbnail').each ->
-			$(this).css 'background-image', 'url("' + $(this).attr('data-src') + '")'
+		$('#portfolio').waypoint ->
+			$('#portfolio .thumbnail').each ->
+				$(this).css 'background-image', 'url("' + $(this).attr('data-src') + '")'
+			, { triggerOnce: true }
 
 	isInViewport = (el) ->
 		top = $(el).offset().top
