@@ -45,8 +45,8 @@ body, h1 {
 }
 
 .navbar-brand {
-	background: url('../img/logo-small.png');
-	min-width: 198px;
+	background: url('../img/logo-small.png') 10px center no-repeat;
+	min-width: 208px;
 	min-height: 40px;
 	text-indent: -9999px;
 }
@@ -266,6 +266,68 @@ a.social {
 			text-transform: lowercase;
 			font-family: 'Georgia', Georgia, serif;
 			color: #aaa;
+		}
+	}
+}
+
+#clients {
+	background: url('../img/bg3.jpg');
+	background-size: cover;
+
+	color: #fff;
+
+	h1.title::after {
+		background: #fff;
+	}
+}
+
+#clientlist {
+
+	width: 336px;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+	color: #000;
+
+	li {
+		display: inline-block;
+		width: 64px;
+		height: 64px;
+		margin: 5px;
+		border-radius: 32px;
+		border: 3px solid #fff;
+		position: relative;
+		z-index: 10;
+		cursor: pointer;
+
+		div, a {
+			display: none;
+		}
+
+		&.active {
+			z-index: inherit;
+			border-color: #ddd;
+			i {
+				display: block;
+				line-height: 59px;
+				text-transform: uppercase;
+				font-style: normal;
+				font-size: 1.2em;
+				color: #666;
+			}
+			div {
+				position: absolute;
+				width: 500px;
+				margin-top: auto;
+				background: #fff;
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+				padding: 20px;
+				z-index: 20;
+				top: 32px;
+				left: -217px;
+				border-color: @theme-primary;
+				display: block;
+			}
 		}
 	}
 }

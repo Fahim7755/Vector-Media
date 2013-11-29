@@ -15,16 +15,20 @@ define [
 		winwidth = $(window).width()
 		navheight = $('#js-nav').height()
 
-		controller.addTween(
-			'#hello',
-			(new TimelineLite()).append([
-				TweenMax.fromTo($('#hello .center'), 1, 
-					{css:{'padding-top': 0}, immediateRender:true}, 
-					{css:{'padding-top': winheight  * 0.25}}
-				),
-			]),
-			winheight 
-		)
+		parallaxer = (element) ->
+			h = $(this).height()
+			controller.addTween(
+				element,
+				(new TimelineLite()).append([
+					TweenMax.fromTo($(element + ' .center'), 1, 
+						{css:{'padding-top': 0}, immediateRender:true}, 
+						{css:{'padding-top': h  * 0.25}}
+					),
+				]),
+				h
+			)
+
+		parallaxer('#hello');
 
 		$('#about').css
 			'margin-bottom': (winheight * 0.25) + 'px'
@@ -49,16 +53,7 @@ define [
 			]),
 		}
 
-		controller.addTween(
-			'#services',
-			(new TimelineLite()).append([
-				TweenMax.fromTo($('#services .center'), 1, 
-					{css:{'padding-top': 0}, immediateRender:true}, 
-					{css:{'padding-top': winheight  * 0.25}}
-				),
-			]),
-			winheight 
-		)
+		parallaxer('#services');
 
 
 		$('a.scrollto').on 'click', (e) ->
@@ -78,9 +73,29 @@ define [
 
 		$('#portfolio-grid').mixitup();
 		$('#portfolio').waypoint ->
+			$(@).waypoint('destroy')
 			$('#portfolio .thumbnail').each ->
 				$(this).css 'background-image', 'url("' + $(this).attr('data-src') + '")'
-			, { triggerOnce: true }
+
+		$('#clientlist li').wrapInner('<div />').each ->
+			$(@).css 'background-image', 'url("img/clients/' + $(this).attr('data-name') + '.png")'
+
+
+		testimonialbox = false
+
+		$('#clientlist li').on 'click', (e) ->
+			$('#clientlist li').removeClass 'active'
+			$(this).addClass 'active'
+			$('div', this).css 'opacity', 0
+			$('div', this).animate { opacity: 1 }
+
+			e.stopPropagation()
+			testimonialbox = true
+
+		$('html').on 'click', ->
+			if testimonialbox is on
+				$('#clientlist li').removeClass('active')
+				testimonialbox = false
 
 	isInViewport = (el) ->
 		top = $(el).offset().top
@@ -127,13 +142,13 @@ define [
 				left: Math.max((p_width  - width ) * 0.5, 0 ) + 'px'
 
 			$(this).parent().css
-				'min-height': height
+				'min-height': Math.max(height, p_height) + 'px'
 
 	setSlide = ->
 		height = $(window).height()
 
 		$('.slide').css
-			height: height
+			'min-height': height + 'px'
 
 	tickerGo = ->
 		$('.ticker').each ->
