@@ -5,36 +5,53 @@ define [
 	'waypoints'
 ], ($, _) ->
 
-	controller = $.superscrollorama
-		triggerAtCenter: false,
-		playoutAnimations: true
+	inits = ->
+		controller = $.superscrollorama
+			triggerAtCenter: false,
+			playoutAnimations: true
 
-	winheight = $(window).height()
-	navheight = $('#js-nav').height()
+		winheight = $(window).height()
+		navheight = $('#js-nav').height()
 
-	controller.addTween(
-		'#hello',
-		(new TimelineLite()).append([
-			TweenMax.fromTo($('#hello .center'), 1, 
-				{css:{'padding-top': 0}, immediateRender:true}, 
-				{css:{'padding-top': winheight  * 0.25}}
-			),
-		]),
-		winheight 
-	)
+		controller.addTween(
+			'#hello',
+			(new TimelineLite()).append([
+				TweenMax.fromTo($('#hello .center'), 1, 
+					{css:{'padding-top': 0}, immediateRender:true}, 
+					{css:{'padding-top': winheight  * 0.25}}
+				),
+			]),
+			winheight 
+		)
 
-	$('#about').css
-		'margin-bottom': (winheight * 0.25) + 'px'
+		$('#about').css
+			'margin-bottom': (winheight * 0.25) + 'px'
 
-	controller.pin '#about', winheight * 0.25, {
-		offset: -navheight
-		anim: (new TimelineLite()).append([
-			TweenMax.fromTo($('#about p'), 0.25, 
-				{css:{'opacity': 0}, immediateRender:true}, 
-				{css:{'opacity': 1 }}
-			),
-		]),
-	}
+		controller.pin '#about', winheight * 0.25, {
+			offset: -navheight
+			anim: (new TimelineLite()).append([
+				TweenMax.fromTo($('#js-team'), 0.25, 
+					{css:{'opacity': 0}, immediateRender:true}, 
+					{css:{'opacity': 1 }}
+				),
+			]),
+		}
+
+
+		$('a.scrollto').on 'click', (e) ->
+			$('body').animate({
+					scrollTop: $( $(this).attr('href') ).offset().top
+				}, 500)
+			
+			e.preventDefault()
+			return false
+
+		$('#js-navlist a').each ->
+			$elem = $( $(this).attr('href'))
+
+			$elem.waypoint =>
+				$('#js-navlist li').removeClass 'active'
+				$(this).parent('li').addClass 'active'
 
 	isInViewport = (el) ->
 		top = $(el).offset().top
@@ -114,6 +131,7 @@ define [
 				setSlide()
 				centerElements()
 				tickerGo()
+				inits()
 
 				$(window).on 'resize', resizeUpdates
 	}
