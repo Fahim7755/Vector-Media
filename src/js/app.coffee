@@ -11,6 +11,7 @@ define [
 			playoutAnimations: true
 
 		winheight = $(window).height()
+		winwidth = $(window).width()
 		navheight = $('#js-nav').height()
 
 		controller.addTween(
@@ -27,13 +28,23 @@ define [
 		$('#about').css
 			'margin-bottom': (winheight * 0.25) + 'px'
 
-		controller.pin '#about', winheight * 0.25, {
+		controller.pin '#about', winheight * 0.5, {
 			offset: -navheight
 			anim: (new TimelineLite()).append([
 				TweenMax.fromTo($('#js-team'), 0.25, 
 					{css:{'opacity': 0}, immediateRender:true}, 
 					{css:{'opacity': 1 }}
-				),
+				)
+			]),
+		}
+
+		controller.pin '#services', winheight * 0.5, {
+			offset: -navheight
+			anim: (new TimelineLite()).append([
+				TweenMax.fromTo($('#services .service h3'), 0.25, 
+					{css:{'opacity': 0, 'letter-spacing': '0em'}, immediateRender:true}, 
+					{css:{'opacity': 1, 'letter-spacing': '0.3em' }}
+				)
 			]),
 		}
 
@@ -96,6 +107,9 @@ define [
 			$(this).css
 				top : Math.max((p_height - height) * 0.5, 40) + 'px'
 				left: Math.max((p_width  - width ) * 0.5, 0 ) + 'px'
+
+			$(this).parent().css
+				'min-height': height
 
 	setSlide = ->
 		height = $(window).height()
