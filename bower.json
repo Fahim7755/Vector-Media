@@ -22,7 +22,7 @@
     "underscore": "~1.0.2",
     "jquery-waypoints": "~2.0.3",
     "mixitup": "~1.5.5",
-    "requirejs": "~2.0.10",
-    "requirejs-text": "~2.1.9"
+    "requirejs": "~2.1.9",
+    "requirejs-text": "~2.0.10"
   }
 }
